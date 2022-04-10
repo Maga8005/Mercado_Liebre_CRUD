@@ -6,7 +6,7 @@ const productsFilePath = path.join(__dirname, '../data/productsDataBase.json'); 
 
 function readDB(){ //Se hace una función que lea primero la base de datos, y se actualice antes de llamarla a los callbacks.
 	let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8')); //trae el JSON stringificado, luego lo lee (fs), y lo parsea a objeto literal para poder trabajarlo
-	return products.filter(product => product.show); //product.show por default YA ES TRUE
+	return products = products.filter(product => product.show); //product.show por default YA ES TRUE
 }
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); //Función para separar miles, retorna una string y no un número.
@@ -93,7 +93,7 @@ const controller = {
 	//products = products.filter(product => product.id != id);//.filter crea un array que cumplan con todos los elementos de la condición, en este caso que tengan diferente id de la enviada desde la URL. DE BORRA DEL ARRAY
 	products = products.map(product => {
 		if (product.id == id){
-			product.show = "false"
+			product.show = false
 		}
 		return product;
 	});
